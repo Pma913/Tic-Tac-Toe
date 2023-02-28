@@ -20,6 +20,12 @@ body {
   display: flex;
   flex-direction: column;
   width: 25%;
+  background-color: gold;
+}
+
+.player1-container {
+  display: flex;
+  justify-content: center;
 }
 
 .center-column{
@@ -48,4 +54,14 @@ body {
 
 .square {
   background-color: bisque;
+}
+
+.player-turn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.player2-container {
+  display: flex;
+  justify-content: center;
 }
