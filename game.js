@@ -2,6 +2,7 @@ class Game {
   constructor() {
     this.players = [];
     this.playerTurn;
+    this.movesLeft = 9;
   }
 
   addPlayers(player) {
@@ -19,6 +20,7 @@ class Game {
   }
 
   checkForWin(player) {
+      this.movesLeft -= 1;
     // for (var i = 0; i < this.players.length; i++) {
       var winOne = player.moves.includes('squareOne') && player.moves.includes('squareTwo') && player.moves.includes('squareThree');
       var winTwo = player.moves.includes('squareFour') && player.moves.includes('squareFive') && player.moves.includes('squareSix');
@@ -33,6 +35,8 @@ class Game {
         player.wins += 1;
 
         console.log("Pulled a win!")
+      } else if (this.movesLeft === 0) {
+        console.log("Draw")
       }
     // }
   
