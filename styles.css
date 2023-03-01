@@ -48,10 +48,13 @@ body {
   grid-gap: 8px;
 }
 
-.square,
-.center-column {
-  background-color: rgb(246, 246, 246);
+.square {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 
 .player-turn-container {
   display: flex;
