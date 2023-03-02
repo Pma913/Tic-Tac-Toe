@@ -37,12 +37,16 @@ console.log(event.target.id)
   if (game.playerTurn === "one" && !playerOneOccupy && !playerTwoOccupy && event.target.classList.contains('square')) {
     document.getElementById([event.target.id]).innerHTML = `<h2 class="player-icon">${playerOne.cursor}</h2>`;
     playerOne.addMove(event.target.id);
+    game.changePlayer();
     game.checkForWin(playerOne);
+    game.displayPlayer();
   } else if (game.playerTurn === "two" && !playerTwoOccupy && !playerOneOccupy && event.target.classList.contains('square')){
     document.getElementById([event.target.id]).innerHTML = `<h2 class="player-icon">${playerTwo.cursor}</h2>`;
     playerTwo.addMove(event.target.id);
+    game.changePlayer();
     game.checkForWin(playerTwo);
+    game.displayPlayer();
   }
-  game.changePlayer();
-  game.displayPlayer()
+  
+  
 }
