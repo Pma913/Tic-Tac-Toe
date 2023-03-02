@@ -21,7 +21,6 @@ class Game {
 
   checkForWin(player) {
       this.movesLeft -= 1;
-    // for (var i = 0; i < this.players.length; i++) {
       var winOne = player.moves.includes('squareOne') && player.moves.includes('squareTwo') && player.moves.includes('squareThree');
       var winTwo = player.moves.includes('squareFour') && player.moves.includes('squareFive') && player.moves.includes('squareSix');
       var winThree = player.moves.includes('squareSeven') && player.moves.includes('squareEight') && player.moves.includes('squareNine');
@@ -33,26 +32,21 @@ class Game {
       
       if (winOne || winTwo || winThree || winFour || winFive || winSix || winSeven || winEight) {
         player.wins += 1;
-
+        winDrawDisplay.innerHTML = `<h2>You Won!</h2>`;
+        setTimeout(this.resetBoard(), 5000)
         console.log("Pulled a win!")
       } else if (this.movesLeft === 0) {
         console.log("Draw")
       }
-    // }
-  
-  
-  // if the players array contains certain combos, then they win
-  // if they win, 
-
-  // for a draw, set a move counter. 
-  // if no winnig conditions have been met after a certain number then   result in a draw
-  
   }
 
   resetBoard() {
-  // research a timer setting to display inner HTML
-  // when a winner has been selected, then run the timer
-  // when timer runs out, the board clears (player move array gets set to 0) and dom gets updated
-  // 
+    this.playerTurn = "one"
+    this.movesLeft = 9;
+    playerOne.wins = 0;
+    playerOne.moves.length = 0;
+    playerTwo.wins = 0;
+    playerTwo.moves.length = 0;
+    winDrawDisplay.innerHTML = `<h2 class="player-turn">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
   }
 }
