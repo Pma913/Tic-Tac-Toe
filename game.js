@@ -1,7 +1,7 @@
 class Game {
   constructor() {
     this.players = [];
-    this.playerTurn;
+    this.playerTurn = 'one';
     this.movesLeft = 9;
   }
 
@@ -13,10 +13,18 @@ class Game {
 
   changePlayer() {
     if (this.playerTurn === 'one') {
-      this.playerTurn = this.players[1].id;
+      this.playerTurn = 'two';
     } else {
-      this.playerTurn = this.players[0].id;
+      this.playerTurn = 'one';
     }
+  }
+
+  displayPlayer(player) {
+    if (this.playerTurn === 'one') {
+      playerTurnDisplay.innerText = 'X';
+    } else {
+      playerTurnDisplay.innerText = 'O';
+    }    
   }
 
   checkForWin(player) {
@@ -32,15 +40,16 @@ class Game {
       
       if (winOne || winTwo || winThree || winFour || winFive || winSix || winSeven || winEight) {
         player.wins += 1;
-        winDrawDisplay.innerHTML = `<h2>You Won!</h2>`;
-        setTimeout(this.resetBoard, 3000);
+        winDrawDisplay.innerHTML = `<h2>${player.cursor} Won!</h2>`;
+        setTimeout(game.resetBoard, 3000);
         this.movesLeft = 9;
-        console.log("Pulled a win!")
+       
       } else if (this.movesLeft === 0) {
         winDrawDisplay.innerHTML = `<h2>It be a draw!</h2>`;
-        setTimeout(this.resetBoard, 3000);
+        setTimeout(game.resetBoard, 3000);
         this.movesLeft = 9;
-        console.log("Draw")
+        // game.displayPlayer();
+        // console.log("Draw")
       }
   }
 
@@ -53,6 +62,8 @@ class Game {
     playerOne.moves.length = 0;
     playerTwo.moves.length = 0;
     winDrawDisplay.innerHTML = `<h2 class="player-turn">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
+    game.displayPlayer()
+    
     
   }
 }
