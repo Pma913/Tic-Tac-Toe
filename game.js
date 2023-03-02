@@ -33,20 +33,26 @@ class Game {
       if (winOne || winTwo || winThree || winFour || winFive || winSix || winSeven || winEight) {
         player.wins += 1;
         winDrawDisplay.innerHTML = `<h2>You Won!</h2>`;
-        setTimeout(this.resetBoard(), 5000)
+        setTimeout(this.resetBoard, 3000);
+        this.movesLeft = 9;
         console.log("Pulled a win!")
       } else if (this.movesLeft === 0) {
+        winDrawDisplay.innerHTML = `<h2>It be a draw!</h2>`;
+        setTimeout(this.resetBoard, 3000);
+        this.movesLeft = 9;
         console.log("Draw")
       }
   }
 
   resetBoard() {
-    this.playerTurn = "one"
-    this.movesLeft = 9;
-    playerOne.wins = 0;
+    var squares = document.getElementsByClassName('square');
+
+    for (var i = 0; i < squares.length; i++) {
+      squares[i].innerHTML = '';
+    }
     playerOne.moves.length = 0;
-    playerTwo.wins = 0;
     playerTwo.moves.length = 0;
     winDrawDisplay.innerHTML = `<h2 class="player-turn">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
+    
   }
 }
