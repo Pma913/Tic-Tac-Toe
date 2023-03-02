@@ -9,6 +9,7 @@ var squareSeven = document.querySelector('#squareSeven');
 var squareEight = document.querySelector('#squareEight');
 var squareNine = document.querySelector('#squareNine');
 var gameBoard = document.querySelector('#boardGame');
+var winDrawDisplay = document.querySelector('#displayTurn')
 /* Data Model */
 
 var game = new Game();
@@ -28,13 +29,13 @@ function addIcon(event) {
   var playerOneOccupy = playerOne.moves.includes(event.target.id);
   var playerTwoOccupy = playerTwo.moves.includes(event.target.id);
   if (game.playerTurn === "one" && !playerOneOccupy && !playerTwoOccupy) {
-    document.getElementById([event.target.id]).innerHTML = `<h2>${playerOne.cursor}</h2>`;
+    document.getElementById([event.target.id]).innerHTML = `<h2 class="player-icon">${playerOne.cursor}</h2>`;
     console.log('P1')
     playerOne.addMove(event.target.id);
     game.checkForWin(playerOne);
     game.changePlayer();
   } else if (game.playerTurn === "two" && !playerTwoOccupy && !playerOneOccupy){
-    document.getElementById([event.target.id]).innerHTML = `<h2>${playerTwo.cursor}</h2>`;
+    document.getElementById([event.target.id]).innerHTML = `<h2 class="player-icon">${playerTwo.cursor}</h2>`;
     console.log('P2')
     playerTwo.addMove(event.target.id);
     game.checkForWin(playerTwo);
