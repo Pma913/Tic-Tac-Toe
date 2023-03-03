@@ -1,6 +1,7 @@
 /* query selectors */
 
-
+var playerOneWins = document.querySelector('#playerOneWins')
+var playerTwoWins = document.querySelector('#playerTwoWins')
 var gameBoard = document.querySelector('#boardGame');
 var winDrawDisplay = document.querySelector('#displayTurn');
 /* Data Model */
