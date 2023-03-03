@@ -12,26 +12,26 @@ class Game {
   }
 
   changePlayer() {
-    var playerTurnDisplay = document.querySelector('#innerTextLine');
+    // var playerTurnDisplay = document.querySelector('#innerTextLine');
     if (this.playerTurn === 'one') {
       this.playerTurn = 'two';
-      playerTurnDisplay.innerText = `${playerTwo.cursor}`;
+      // playerTurnDisplay.innerText = `${playerTwo.cursor}`;
       // playerTurnDisplay.innerText = `${playerTwo.cursor}`;
     } else {
       this.playerTurn = 'one';
-      playerTurnDisplay.innerText = `${playerOne.cursor}`;
+      // playerTurnDisplay.innerText = `${playerOne.cursor}`;
       // playerTurnDisplay.innerText = `${playerOne.cursor}`;
     }
   }
 
-  displayPlayer() {
-    var playerTurnDisplay = document.querySelector('#innerTextLine');
-    if (this.playerTurn === 'one') {
-      playerTurnDisplay.innerText = `${playerOne.cursor}`;
-    } else {
-      playerTurnDisplay.innerText = `${playerTwo.cursor}`;
-    }    
-  }
+  // displayPlayer() {
+  //   var playerTurnDisplay = document.querySelector('#innerTextLine');
+  //   if (this.playerTurn === 'one') {
+  //     playerTurnDisplay.innerText = `${playerOne.cursor}`;
+  //   } else {
+  //     playerTurnDisplay.innerText = `${playerTwo.cursor}`;
+  //   }    
+  // }
 
   checkForWin(player) {
       this.movesLeft -= 1;
@@ -48,16 +48,16 @@ class Game {
         player.wins += 1;
         winDrawDisplay.innerHTML = `<h2>${player.cursor} Won!</h2>`;
         setTimeout(this.resetBoard, 3000);
-        setTimeout(this.changePlayer, 3000);
+        setTimeout(displayPlayer, 3000);
         this.movesLeft = 9;
         this.winCounter();
       } else if (this.movesLeft === 0) {
         winDrawDisplay.innerHTML = `<h2>It be a draw!</h2>`;
         setTimeout(this.resetBoard, 3000);
-        setTimeout(this.changePlayer, 3000);
+        setTimeout(displayPlayer, 3000);
         this.movesLeft = 9;
       }
-      // this.displayPlayer();
+      this.changePlayer();
   }
 
   resetBoard() {
