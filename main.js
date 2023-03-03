@@ -27,12 +27,13 @@ function addIcon(event) {
   var playerTwoOccupy = playerTwo.moves.includes(event.target.id);
   var validSquare = !playerOneOccupy && !playerTwoOccupy && event.target.classList.contains('square');
   var clickedSquare = document.getElementById([event.target.id]);
+  var gameGood = winDrawDisplay.classList.length === 1;
 
-  if (game.playerTurn === "one" && validSquare) {
+  if (game.playerTurn === "one" && validSquare && gameGood) {
     clickedSquare.innerHTML = `<h2 class="player-icon">${playerOne.cursor}</h2>`;
     playerOne.addMove(event.target.id);
     game.checkForWin(playerOne);
-  } else if (game.playerTurn === "two" && validSquare){
+  } else if (game.playerTurn === "two" && validSquare && gameGood){
     clickedSquare.innerHTML = `<h2 class="player-icon">${playerTwo.cursor}</h2>`;
     playerTwo.addMove(event.target.id);
     game.checkForWin(playerTwo);
