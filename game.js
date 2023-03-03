@@ -50,6 +50,7 @@ class Game {
         setTimeout(this.resetBoard, 3000);
         setTimeout(this.changePlayer, 3000);
         this.movesLeft = 9;
+        this.winCounter();
       } else if (this.movesLeft === 0) {
         winDrawDisplay.innerHTML = `<h2>It be a draw!</h2>`;
         setTimeout(this.resetBoard, 3000);
@@ -70,4 +71,8 @@ class Game {
     winDrawDisplay.innerHTML = `<h2 class="player-turn"">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
   }
 
+  winCounter() {
+    playerOneWins.innerText = `Number of wins: ${this.players[0].wins}`;
+    playerTwoWins.innerText = `Number of wins: ${this.players[1].wins}`;
+  }
 }
