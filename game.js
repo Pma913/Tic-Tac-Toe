@@ -12,18 +12,24 @@ class Game {
   }
 
   changePlayer() {
+    var playerTurnDisplay = document.querySelector('#innerTextLine');
     if (this.playerTurn === 'one') {
       this.playerTurn = 'two';
+      playerTurnDisplay.innerText = `${playerTwo.cursor}`;
+      // playerTurnDisplay.innerText = `${playerTwo.cursor}`;
     } else {
       this.playerTurn = 'one';
+      playerTurnDisplay.innerText = `${playerOne.cursor}`;
+      // playerTurnDisplay.innerText = `${playerOne.cursor}`;
     }
   }
 
-  displayPlayer(player) {
+  displayPlayer() {
+    var playerTurnDisplay = document.querySelector('#innerTextLine');
     if (this.playerTurn === 'one') {
-      playerTurnDisplay.innerText = 'X';
+      playerTurnDisplay.innerText = `${playerOne.cursor}`;
     } else {
-      playerTurnDisplay.innerText = 'O';
+      playerTurnDisplay.innerText = `${playerTwo.cursor}`;
     }    
   }
 
@@ -41,16 +47,16 @@ class Game {
       if (winOne || winTwo || winThree || winFour || winFive || winSix || winSeven || winEight) {
         player.wins += 1;
         winDrawDisplay.innerHTML = `<h2>${player.cursor} Won!</h2>`;
-        setTimeout(game.resetBoard, 3000);
+        setTimeout(this.resetBoard, 3000);
+        setTimeout(this.changePlayer, 3000);
         this.movesLeft = 9;
-       
       } else if (this.movesLeft === 0) {
         winDrawDisplay.innerHTML = `<h2>It be a draw!</h2>`;
-        setTimeout(game.resetBoard, 3000);
+        setTimeout(this.resetBoard, 3000);
+        setTimeout(this.changePlayer, 3000);
         this.movesLeft = 9;
-        // game.displayPlayer();
-        // console.log("Draw")
       }
+      // this.displayPlayer();
   }
 
   resetBoard() {
@@ -61,9 +67,7 @@ class Game {
     }
     playerOne.moves.length = 0;
     playerTwo.moves.length = 0;
-    winDrawDisplay.innerHTML = `<h2 class="player-turn">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
-    game.displayPlayer()
-    
-    
+    winDrawDisplay.innerHTML = `<h2 class="player-turn"">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
   }
+
 }
