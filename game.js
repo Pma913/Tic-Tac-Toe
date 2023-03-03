@@ -1,7 +1,7 @@
 class Game {
   constructor() {
     this.players = [];
-    this.playerTurn;
+    this.playerTurn = 'one';
     this.movesLeft = 9;
   }
 
@@ -12,11 +12,25 @@ class Game {
   }
 
   changePlayer() {
+    var playerTurnDisplay = document.querySelector('#innerTextLine');
     if (this.playerTurn === 'one') {
-      this.playerTurn = this.players[1].id;
+      this.playerTurn = 'two';
+      playerTurnDisplay.innerText = `${playerTwo.cursor}`;
+      // playerTurnDisplay.innerText = `${playerTwo.cursor}`;
     } else {
-      this.playerTurn = this.players[0].id;
+      this.playerTurn = 'one';
+      playerTurnDisplay.innerText = `${playerOne.cursor}`;
+      // playerTurnDisplay.innerText = `${playerOne.cursor}`;
     }
+  }
+
+  displayPlayer() {
+    var playerTurnDisplay = document.querySelector('#innerTextLine');
+    if (this.playerTurn === 'one') {
+      playerTurnDisplay.innerText = `${playerOne.cursor}`;
+    } else {
+      playerTurnDisplay.innerText = `${playerTwo.cursor}`;
+    }    
   }
 
   checkForWin(player) {
@@ -32,16 +46,17 @@ class Game {
       
       if (winOne || winTwo || winThree || winFour || winFive || winSix || winSeven || winEight) {
         player.wins += 1;
-        winDrawDisplay.innerHTML = `<h2>You Won!</h2>`;
+        winDrawDisplay.innerHTML = `<h2>${player.cursor} Won!</h2>`;
         setTimeout(this.resetBoard, 3000);
+        setTimeout(this.changePlayer, 3000);
         this.movesLeft = 9;
-        console.log("Pulled a win!")
       } else if (this.movesLeft === 0) {
         winDrawDisplay.innerHTML = `<h2>It be a draw!</h2>`;
         setTimeout(this.resetBoard, 3000);
+        setTimeout(this.changePlayer, 3000);
         this.movesLeft = 9;
-        console.log("Draw")
       }
+      // this.displayPlayer();
   }
 
   resetBoard() {
@@ -52,7 +67,7 @@ class Game {
     }
     playerOne.moves.length = 0;
     playerTwo.moves.length = 0;
-    winDrawDisplay.innerHTML = `<h2 class="player-turn">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
-    
+    winDrawDisplay.innerHTML = `<h2 class="player-turn"">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
   }
+
 }
