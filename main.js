@@ -58,21 +58,19 @@ function checkLocalStorage() {
     createDataModel();
     displayPlayer();
   }
-  addPlayers()
+  addPlayers();
 }
 
 function assignDataModel() {
-  game = new Game(savedGame.players, savedGame.playerTurn, savedGame.movesLeft);
+  game = new Game(savedGame.playerTurn, savedGame.movesLeft);
   playerOne = new Player('one', 'X', savedGame.players[0].wins, savedGame.players[0].moves);
   playerTwo = new Player('two', 'O', savedGame.players[1].wins, savedGame.players[1].moves);
-  // addPlayers();
 }
 
 function createDataModel() {
   game = new Game();
   playerOne = new Player('one', 'X');
   playerTwo = new Player('two', 'O');
-  // addPlayers();
 }
 
 function addPlayers() {

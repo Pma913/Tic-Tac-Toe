@@ -1,5 +1,5 @@
 class Game {
-  constructor(players, playerTurn, movesLeft) {
+  constructor(playerTurn, movesLeft) {
     this.players = [];
     this.playerTurn = playerTurn || 'one';
     this.movesLeft = movesLeft || 9;

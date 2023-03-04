@@ -1,9 +1,9 @@
 class Player {
-  constructor(id, cursor) {
+  constructor(id, cursor, wins, moves) {
     this.id = id;
     this.cursor = cursor;
-    this.wins = 0;
-    this.moves = [];
+    this.wins = wins || 0;
+    this.moves = moves || [];
   }
 
   increaseWins() {
