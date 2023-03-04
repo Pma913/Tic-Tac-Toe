@@ -1,17 +1,17 @@
 /* query selectors */
 
-var playerOneWins = document.querySelector('#playerOneWins')
-var playerTwoWins = document.querySelector('#playerTwoWins')
+var playerOneWins = document.querySelector('#playerOneWins');
+var playerTwoWins = document.querySelector('#playerTwoWins');
 var gameBoard = document.querySelector('#boardGame');
 var winDrawDisplay = document.querySelector('#displayTurn');
 /* Data Model */
-
-var game = new Game();
-var playerOne = new Player('one', 'X');
-var playerTwo = new Player('two', 'O');
-game.addPlayers(playerOne);
-game.addPlayers(playerTwo);
-displayPlayer();
+var savedGame = JSON.parse(localStorage.getItem('game'));
+var game;
+var playerOne;
+var playerTwo;
+checkLocalStorage();
+game.winCounter();
+restoreBoard();
 
 /* Event Listeners */
 
@@ -39,17 +39,49 @@ function addIcon(event) {
     game.checkForWin(playerTwo);
   }
 
-  // game.changePlayer();
-  displayPlayer()
-  
+  displayPlayer();
 }
 
 function displayPlayer() {
-    var playerTurnDisplay = document.querySelector('#innerTextLine');
+  var playerTurnDisplay = document.querySelector('#innerTextLine');
 
-    if (game.playerTurn === 'one') {
-      playerTurnDisplay.innerText = `${playerOne.cursor}`;
-    } else {
-      playerTurnDisplay.innerText = `${playerTwo.cursor}`;
-    }
-  }  
+  if (game.playerTurn === 'one') {
+    playerTurnDisplay.innerText = `${playerOne.cursor}`;
+  } else {
+    playerTurnDisplay.innerText = `${playerTwo.cursor}`;
+  }
+}  
+
+function checkLocalStorage() {
+  if (localStorage.length === 1) {
+    assignDataModel();
+    displayPlayer();
+  } else {
+    createDataModel();
+    displayPlayer();
+  }
+  
+  addPlayers();
+}
+
+function assignDataModel() {
+  game = new Game(savedGame.playerTurn, savedGame.movesLeft);
+  playerOne = new Player('one', 'X', savedGame.players[0].wins, savedGame.players[0].moves);
+  playerTwo = new Player('two', 'O', savedGame.players[1].wins, savedGame.players[1].moves);
+}
+
+function createDataModel() {
+  game = new Game();
+  playerOne = new Player('one', 'X');
+  playerTwo = new Player('two', 'O');
+}
+
+function addPlayers() {
+  game.addPlayer(playerOne);
+  game.addPlayer(playerTwo);
+}
+
+function restoreBoard() {
+  playerOne.restoreMoves();
+  playerTwo.restoreMoves();
+}

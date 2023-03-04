@@ -1,11 +1,11 @@
 class Game {
-  constructor() {
+  constructor(playerTurn, movesLeft) {
     this.players = [];
-    this.playerTurn = 'one';
-    this.movesLeft = 9;
+    this.playerTurn = playerTurn || 'one';
+    this.movesLeft = movesLeft || 9;
   }
 
-  addPlayers(player) {
+  addPlayer(player) {
     if (this.players.length < 2) {
       this.players.push(player)
     }
@@ -36,6 +36,7 @@ class Game {
         setTimeout(this.resetBoard, 3000);
         setTimeout(displayPlayer, 3000);
         this.movesLeft = 9;
+        this.resetMoves();
         this.winCounter();
         winDrawDisplay.classList.add('end-game');
       } else if (this.movesLeft === 0) {
@@ -43,8 +44,10 @@ class Game {
         setTimeout(this.resetBoard, 3000);
         setTimeout(displayPlayer, 3000);
         this.movesLeft = 9;
+        this.resetMoves();
       }
       this.changePlayer();
+      localStorage.setItem('game', JSON.stringify(game));
   }
 
   resetBoard() {
@@ -54,13 +57,17 @@ class Game {
       squares[i].innerHTML = '';
     }
     winDrawDisplay.classList.remove('end-game');
-    playerOne.moves.length = 0;
-    playerTwo.moves.length = 0;
+    
     winDrawDisplay.innerHTML = `<h2 class="player-turn"">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
   }
 
   winCounter() {
     playerOneWins.innerText = `Number of wins: ${this.players[0].wins}`;
     playerTwoWins.innerText = `Number of wins: ${this.players[1].wins}`;
+  }
+
+  resetMoves() {
+    playerOne.moves.length = 0;
+    playerTwo.moves.length = 0;
   }
 }
