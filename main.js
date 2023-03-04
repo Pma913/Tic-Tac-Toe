@@ -10,6 +10,7 @@ var game;
 var playerOne;
 var playerTwo;
 checkLocalStorage();
+game.winCounter();
 
 /* Event Listeners */
 
@@ -58,6 +59,7 @@ function checkLocalStorage() {
     createDataModel();
     displayPlayer();
   }
+  
   addPlayers();
 }
 
