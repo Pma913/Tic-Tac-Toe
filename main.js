@@ -6,12 +6,16 @@ var gameBoard = document.querySelector('#boardGame');
 var winDrawDisplay = document.querySelector('#displayTurn');
 /* Data Model */
 
-var game = new Game();
-var playerOne = new Player('one', 'X');
-var playerTwo = new Player('two', 'O');
-game.addPlayers(playerOne);
-game.addPlayers(playerTwo);
-displayPlayer();
+var game;
+var playerOne;
+var playerTwo;
+checkLocalStorage()
+// var game = new Game();
+// var playerOne = new Player('one', 'X');
+// var playerTwo = new Player('two', 'O');
+// game.addPlayers(playerOne);
+// game.addPlayers(playerTwo);
+// displayPlayer();
 
 /* Event Listeners */
 
@@ -53,3 +57,15 @@ function displayPlayer() {
       playerTurnDisplay.innerText = `${playerTwo.cursor}`;
     }
   }  
+
+  function checkLocalStorage() {
+    if (localStorage.length === 1) {
+    } else {
+      game = new Game();
+      playerOne = new Player('one', 'X');
+      playerTwo = new Player('two', 'O');
+      game.addPlayers(playerOne);
+      game.addPlayers(playerTwo);
+      displayPlayer();
+    }
+  }
