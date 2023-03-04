@@ -4,6 +4,7 @@ var playerOneWins = document.querySelector('#playerOneWins');
 var playerTwoWins = document.querySelector('#playerTwoWins');
 var gameBoard = document.querySelector('#boardGame');
 var winDrawDisplay = document.querySelector('#displayTurn');
+var resetButton = document.querySelector('#resetButton');
 /* Data Model */
 var savedGame = JSON.parse(localStorage.getItem('game'));
 var game;
@@ -16,11 +17,17 @@ restoreBoard();
 /* Event Listeners */
 
 gameBoard.addEventListener('click', addIcon);
+resetButton.addEventListener('click', resetAll);
 
 /* Event Handlers */
 
 
 /* Functions */
+
+function resetAll() {
+  localStorage.clear();
+  location.reload();
+}
 
 function addIcon(event) {
   var playerOneOccupy = playerOne.moves.includes(event.target.id);
