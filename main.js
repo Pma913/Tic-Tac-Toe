@@ -60,6 +60,16 @@ function displayPlayer() {
 
   function checkLocalStorage() {
     if (localStorage.length === 1) {
+      var savedGame = JSON.parse(localStorage.getItem('game'));
+      console.log(savedGame)
+      game = new Game(savedGame.players, savedGame.playerTurn, savedGame.movesLeft);
+      console.log(game)
+      playerOne = new Player('one', 'X', savedGame.players[0].wins, savedGame.players[0].moves);
+      playerTwo = new Player('two', 'O', savedGame.players[1].wins, savedGame.players[1].moves);
+      game.addPlayers(playerOne);
+      game.addPlayers(playerTwo);
+      console.log(game)
+      displayPlayer();
     } else {
       game = new Game();
       playerOne = new Player('one', 'X');
