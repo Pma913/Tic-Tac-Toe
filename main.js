@@ -11,6 +11,7 @@ var playerOne;
 var playerTwo;
 checkLocalStorage();
 game.winCounter();
+restoreBoard();
 
 /* Event Listeners */
 
@@ -78,4 +79,9 @@ function createDataModel() {
 function addPlayers() {
   game.addPlayer(playerOne);
   game.addPlayer(playerTwo);
+}
+
+function restoreBoard() {
+  playerOne.restoreMoves();
+  playerTwo.restoreMoves();
 }
