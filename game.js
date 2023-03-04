@@ -5,7 +5,7 @@ class Game {
     this.movesLeft = movesLeft || 9;
   }
 
-  addPlayers(player) {
+  addPlayer(player) {
     if (this.players.length < 2) {
       this.players.push(player)
     }
