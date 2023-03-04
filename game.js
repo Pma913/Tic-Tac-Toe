@@ -1,8 +1,8 @@
 class Game {
-  constructor() {
-    this.players = [];
-    this.playerTurn = 'one';
-    this.movesLeft = 9;
+  constructor(players, playerTurn, movesLeft) {
+    this.players = players || [];
+    this.playerTurn = playerTurn || 'one';
+    this.movesLeft = movesLeft || 9;
   }
 
   addPlayers(player) {
@@ -45,6 +45,7 @@ class Game {
         this.movesLeft = 9;
       }
       this.changePlayer();
+      localStorage.setItem('game', JSON.stringify(game));
   }
 
   resetBoard() {
