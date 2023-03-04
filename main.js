@@ -18,11 +18,21 @@ restoreBoard();
 
 gameBoard.addEventListener('click', addIcon);
 resetButton.addEventListener('click', resetAll);
+resetButton.addEventListener('mouseenter', onHover);
+resetButton.addEventListener('mouseleave', offHover);
 
 /* Event Handlers */
 
 
 /* Functions */
+
+function offHover() {
+  resetButton.classList.remove('hover');
+}
+
+function onHover() {
+    resetButton.classList.add('hover');
+}
 
 function resetAll() {
   localStorage.clear();
