@@ -62,14 +62,6 @@ class Game {
     this.saveGameData();
   } 
 
-      // this.resetMoves();
-      // setTimeout(this.resetBoard, 3000);
-      // setTimeout(displayPlayer, 3000);
-
-// is there a way to move the setTimeout to the bottom of the function
-// turn CheckForWin into a truthy falsy function
-// what to do about draws?
-// need to update moves
   resetBoard() {
     var squares = document.getElementsByClassName('square');
 
