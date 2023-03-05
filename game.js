@@ -20,34 +20,34 @@ class Game {
   }
 
   checkForWin(player) {
-      this.movesLeft -= 1;
-      var winOne = player.moves.includes('squareOne') && player.moves.includes('squareTwo') && player.moves.includes('squareThree');
-      var winTwo = player.moves.includes('squareFour') && player.moves.includes('squareFive') && player.moves.includes('squareSix');
-      var winThree = player.moves.includes('squareSeven') && player.moves.includes('squareEight') && player.moves.includes('squareNine');
-      var winFour = player.moves.includes('squareOne') && player.moves.includes('squareFour') && player.moves.includes('squareSeven');
-      var winFive = player.moves.includes('squareTwo') && player.moves.includes('squareFive') && player.moves.includes('squareEight');
-      var winSix = player.moves.includes('squareThree') && player.moves.includes('squareSix') && player.moves.includes('squareNine');
-      var winSeven = player.moves.includes('squareThree') && player.moves.includes('squareFive') && player.moves.includes('squareSeven');
-      var winEight = player.moves.includes('squareOne') && player.moves.includes('squareFive') && player.moves.includes('squareNine');
-      
-      if (winOne || winTwo || winThree || winFour || winFive || winSix || winSeven || winEight) {
-        player.wins += 1;
-        winDrawDisplay.innerHTML = `<h2>${player.cursor} Won!</h2>`;
-        setTimeout(this.resetBoard, 3000);
-        setTimeout(displayPlayer, 3000);
-        this.movesLeft = 9;
-        this.resetMoves();
-        this.winCounter();
-        winDrawDisplay.classList.add('end-game');
-      } else if (this.movesLeft === 0) {
-        winDrawDisplay.innerHTML = `<h2>It be a draw!</h2>`;
-        setTimeout(this.resetBoard, 3000);
-        setTimeout(displayPlayer, 3000);
-        this.movesLeft = 9;
-        this.resetMoves();
-      }
-      this.changePlayer();
-      localStorage.setItem('game', JSON.stringify(game));
+    this.removeMoves();
+
+    var winOne = player.moves.includes('squareOne') && player.moves.includes('squareTwo') && player.moves.includes('squareThree');
+    var winTwo = player.moves.includes('squareFour') && player.moves.includes('squareFive') && player.moves.includes('squareSix');
+    var winThree = player.moves.includes('squareSeven') && player.moves.includes('squareEight') && player.moves.includes('squareNine');
+    var winFour = player.moves.includes('squareOne') && player.moves.includes('squareFour') && player.moves.includes('squareSeven');
+    var winFive = player.moves.includes('squareTwo') && player.moves.includes('squareFive') && player.moves.includes('squareEight');
+    var winSix = player.moves.includes('squareThree') && player.moves.includes('squareSix') && player.moves.includes('squareNine');
+    var winSeven = player.moves.includes('squareThree') && player.moves.includes('squareFive') && player.moves.includes('squareSeven');
+    var winEight = player.moves.includes('squareOne') && player.moves.includes('squareFive') && player.moves.includes('squareNine');
+
+    if (winOne || winTwo || winThree || winFour || winFive || winSix || winSeven || winEight) {
+      player.increaseWins();
+      displayWin(player);
+      setTimeout(this.resetBoard, 3000);
+      setTimeout(displayPlayer, 3000);
+      this.resetMoves();
+      this.winCounter();
+      freezeBoard();
+    } else if (!this.movesLeft) {
+      displayDraw();
+      setTimeout(this.resetBoard, 3000);
+      setTimeout(displayPlayer, 3000);
+      this.resetMoves();
+    }
+
+    this.changePlayer();
+    this.saveGameData();
   }
 
   resetBoard() {
@@ -68,5 +68,14 @@ class Game {
   resetMoves() {
     playerOne.moves.length = 0;
     playerTwo.moves.length = 0;
+    this.movesLeft = 9;
+  }
+
+  saveGameData() {
+    localStorage.setItem('game', JSON.stringify(game));
+  }
+
+  removeMoves() {
+    this.movesLeft -= 1;
   }
 }
