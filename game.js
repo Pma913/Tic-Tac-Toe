@@ -56,6 +56,7 @@ class Game {
     for (var i = 0; i < squares.length; i++) {
       squares[i].innerHTML = '';
     }
+
     winDrawDisplay.classList.remove('end-game');
     winDrawDisplay.innerHTML = `<h2 class="player-turn"">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
   }
