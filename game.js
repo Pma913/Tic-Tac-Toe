@@ -54,8 +54,8 @@ class Game {
       displayWin(player);
       this.endGame();
     } else if (!this.movesLeft) {
+      this.endGame();
       displayDraw();
-      this.endGame;
     }
 
     this.changePlayer();
