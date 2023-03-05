@@ -1,4 +1,4 @@
-class Player {
+  class Player {
   constructor(id, cursor, wins, moves) {
     this.id = id;
     this.cursor = cursor;

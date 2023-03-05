@@ -10,8 +10,9 @@ var savedGame = JSON.parse(localStorage.getItem('game'));
 var game;
 var playerOne;
 var playerTwo;
+
 checkLocalStorage();
-game.winCounter();
+restoreWinCounter();
 restoreBoard();
 
 /* Event Listeners */
@@ -40,17 +41,15 @@ function resetAll() {
 }
 
 function addIcon(event) {
-  var playerOneOccupy = playerOne.moves.includes(event.target.id);
-  var playerTwoOccupy = playerTwo.moves.includes(event.target.id);
-  var validSquare = !playerOneOccupy && !playerTwoOccupy && event.target.classList.contains('square');
   var clickedSquare = document.getElementById([event.target.id]);
-  var gameGood = winDrawDisplay.classList.length === 1;
+  var gameGood = !winDrawDisplay.classList.contains('end-game');
+  var isEmpty = !event.target.hasChildNodes();
 
-  if (game.playerTurn === "one" && validSquare && gameGood) {
+  if (game.playerTurn === "one" && isEmpty && gameGood) {
     clickedSquare.innerHTML = `<h2 class="player-icon">${playerOne.cursor}</h2>`;
     playerOne.addMove(event.target.id);
     game.checkForWin(playerOne);
-  } else if (game.playerTurn === "two" && validSquare && gameGood){
+  } else if (game.playerTurn === "two" && isEmpty && gameGood){
     clickedSquare.innerHTML = `<h2 class="player-icon">${playerTwo.cursor}</h2>`;
     playerTwo.addMove(event.target.id);
     game.checkForWin(playerTwo);
@@ -101,4 +100,20 @@ function addPlayers() {
 function restoreBoard() {
   playerOne.restoreMoves();
   playerTwo.restoreMoves();
+}
+
+function restoreWinCounter() {
+  game.winCounter();
+}
+
+function displayWin(player) {
+  winDrawDisplay.innerHTML = `<h2>${player.cursor} Won!</h2>`;
+}
+
+function displayDraw() {
+  winDrawDisplay.innerHTML = `<h2>It be a draw!</h2>`;
+}
+
+function freezeBoard() {
+  winDrawDisplay.classList.add('end-game');
 }
