@@ -19,8 +19,7 @@ class Game {
     }
   }
 
-  checkForWin(player) {
-    this.removeMoves();
+  winAchieved(player) {
 
     var winOne = player.moves.includes('squareOne') && player.moves.includes('squareTwo') && player.moves.includes('squareThree');
     var winTwo = player.moves.includes('squareFour') && player.moves.includes('squareFive') && player.moves.includes('squareSix');
@@ -32,24 +31,45 @@ class Game {
     var winEight = player.moves.includes('squareOne') && player.moves.includes('squareFive') && player.moves.includes('squareNine');
 
     if (winOne || winTwo || winThree || winFour || winFive || winSix || winSeven || winEight) {
+      return true;
+    } else {
+      return false;
+    }
+
+  }
+
+  endGame() {
+    setTimeout(this.resetBoard, 3000);
+    setTimeout(displayPlayer, 3000);
+    freezeBoard();
+    this.resetMoves();
+    this.winCounter();
+  }
+
+  checkForWin(player) {
+    this.removeMoves(); 
+
+    if (this.winAchieved(player)) {
       player.increaseWins();
       displayWin(player);
-      setTimeout(this.resetBoard, 3000);
-      setTimeout(displayPlayer, 3000);
-      this.resetMoves();
-      this.winCounter();
-      freezeBoard();
+      this.endGame();
     } else if (!this.movesLeft) {
       displayDraw();
-      setTimeout(this.resetBoard, 3000);
-      setTimeout(displayPlayer, 3000);
-      this.resetMoves();
+      this.endGame;
     }
 
     this.changePlayer();
     this.saveGameData();
-  }
+  } 
 
+      // this.resetMoves();
+      // setTimeout(this.resetBoard, 3000);
+      // setTimeout(displayPlayer, 3000);
+
+// is there a way to move the setTimeout to the bottom of the function
+// turn CheckForWin into a truthy falsy function
+// what to do about draws?
+// need to update moves
   resetBoard() {
     var squares = document.getElementsByClassName('square');
 
