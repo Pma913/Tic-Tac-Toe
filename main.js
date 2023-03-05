@@ -62,10 +62,8 @@ function resetAll() {
 
 function addIcon(event) {
   var clickedSquare = document.getElementById([event.target.id]);
-  var gameGood = winDrawDisplay.classList.length === 1;
+  var gameGood = !winDrawDisplay.classList.contains('end-game');
   var isEmpty = !event.target.hasChildNodes();
-  
-  console.log(event.target.hasChildNodes())
 
   if (game.playerTurn === "one" && isEmpty && gameGood) {
     clickedSquare.innerHTML = `<h2 class="player-icon">${playerOne.cursor}</h2>`;
