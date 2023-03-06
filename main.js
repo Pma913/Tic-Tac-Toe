@@ -111,5 +111,5 @@ function displayDraw() {
 }
 
 function freezeBoard() {
-  winDrawDisplay.classList.add('end-game');
+  winDrawDisplay.classList.toggle('end-game');
 }
