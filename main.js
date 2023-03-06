@@ -12,7 +12,6 @@ var playerOne;
 var playerTwo;
 
 checkLocalStorage();
-restoreWinCounter();
 restoreBoard();
 
 /* Event Listeners */
@@ -23,22 +22,6 @@ resetButton.addEventListener('mouseenter', onHover);
 resetButton.addEventListener('mouseleave', offHover);
 
 /* Event Handlers */
-
-
-/* Functions */
-
-function offHover() {
-  resetButton.classList.remove('hover');
-}
-
-function onHover() {
-    resetButton.classList.add('hover');
-}
-
-function resetAll() {
-  localStorage.clear();
-  location.reload();
-}
 
 function addIcon(event) {
   var clickedSquare = document.getElementById([event.target.id]);
@@ -57,6 +40,22 @@ function addIcon(event) {
 
   displayPlayer();
 }
+
+function resetAll() {
+  localStorage.clear();
+  location.reload();
+}
+
+function onHover() {
+    resetButton.classList.add('hover');
+}
+
+function offHover() {
+  resetButton.classList.remove('hover');
+}
+
+/* Functions */
+
 
 function displayPlayer() {
   var playerTurnDisplay = document.querySelector('#innerTextLine');
@@ -100,9 +99,6 @@ function addPlayers() {
 function restoreBoard() {
   playerOne.restoreMoves();
   playerTwo.restoreMoves();
-}
-
-function restoreWinCounter() {
   game.winCounter();
 }
 
