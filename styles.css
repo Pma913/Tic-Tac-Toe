@@ -38,7 +38,7 @@ body {
   height: 50%;
   border: 0;
   background-color: black;
-  width: 90%
+  width: 60%
 }
 
 .game-board {
@@ -56,7 +56,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 152px;
+  min-height: 120px;
 }
 
 
@@ -70,16 +70,18 @@ body {
   border-radius: 15px;
   border-width: 0;
   border-width: 4px;
-  color: rgb(43, 66, 72);
+  color: rgb(98, 133, 142);
   cursor: pointer;
   font-family: futura;
   font-size: 100%;
   font-weight: 600;
   height: 5%;
   width: 20%;
+
+  transition: transform 0.3s, color 0.3s;
 }
 
-.hover {
-  color: rgb(13, 34, 36);
-  width: 22%;
+.reset-button:hover {
+  transform: translateY(-10px);
+  color:rgb(13, 34, 36);
 }
