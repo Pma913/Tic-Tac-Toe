@@ -68,14 +68,13 @@ function displayPlayer() {
 }  
 
 function checkLocalStorage() {
-  if (localStorage.length === 1) {
+  if (localStorage.length) {
     assignDataModel();
-    displayPlayer();
   } else {
     createDataModel();
-    displayPlayer();
   }
   
+  displayPlayer();
   addPlayers();
 }
 
