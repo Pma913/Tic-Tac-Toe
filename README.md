@@ -27,7 +27,7 @@ I built this app from the ground up. a fair amount of time went in to getting th
 
 ### Learning Goals:
 
-1. Demonstrate an understanding DRY javascript
+1. Demonstrate an understanding for DRY javascript
 2. Understanding data model and DOM
 3. Iterate through DOM elements using for loops
 4. Use problem solving techniques to tackle a large
