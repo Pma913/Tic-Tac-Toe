@@ -43,7 +43,7 @@ class Game {
     setTimeout(displayPlayer, 3000);
     freezeBoard();
     this.resetMoves();
-    this.winCounter();
+    winCounter();
   }
 
   checkForWin(player) {
@@ -71,11 +71,6 @@ class Game {
 
     freezeBoard();
     winDrawDisplay.innerHTML = `<h2 class="player-turn"">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
-  }
-
-  winCounter() {
-    playerOneWins.innerText = `Number of wins: ${this.players[0].wins}`;
-    playerTwoWins.innerText = `Number of wins: ${this.players[1].wins}`;
   }
 
   resetMoves() {

@@ -99,7 +99,7 @@ function addPlayers() {
 function restoreBoard() {
   playerOne.restoreMoves();
   playerTwo.restoreMoves();
-  game.winCounter();
+  winCounter();
 }
 
 function displayWin(player) {
@@ -113,3 +113,8 @@ function displayDraw() {
 function freezeBoard() {
   winDrawDisplay.classList.toggle('end-game');
 }
+
+function winCounter() {
+    playerOneWins.innerText = `Number of wins: ${playerOne.wins}`;
+    playerTwoWins.innerText = `Number of wins: ${playerTwo.wins}`;
+  }
