@@ -5,9 +5,10 @@ class Game {
     this.movesLeft = movesLeft || 9;
   }
 
-  addPlayer(player) {
-    if (this.players.length < 2) {
-      this.players.push(player)
+  addPlayers(player1, player2) {
+    if (!this.players.length) {
+      this.players.push(player1);
+      this.players.push(player2);
     }
   }
 
