@@ -5,9 +5,10 @@ class Game {
     this.movesLeft = movesLeft || 9;
   }
 
-  addPlayer(player) {
-    if (this.players.length < 2) {
-      this.players.push(player)
+  addPlayers(player1, player2) {
+    if (!this.players.length) {
+      this.players.push(player1);
+      this.players.push(player2);
     }
   }
 
@@ -43,7 +44,7 @@ class Game {
     setTimeout(displayPlayer, 3000);
     freezeBoard();
     this.resetMoves();
-    this.winCounter();
+    winCounter();
   }
 
   checkForWin(player) {
@@ -69,13 +70,8 @@ class Game {
       squares[i].innerHTML = '';
     }
 
-    winDrawDisplay.classList.remove('end-game');
+    freezeBoard();
     winDrawDisplay.innerHTML = `<h2 class="player-turn"">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
-  }
-
-  winCounter() {
-    playerOneWins.innerText = `Number of wins: ${this.players[0].wins}`;
-    playerTwoWins.innerText = `Number of wins: ${this.players[1].wins}`;
   }
 
   resetMoves() {

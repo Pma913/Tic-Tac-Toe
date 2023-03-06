@@ -5,18 +5,17 @@ var playerTwoWins = document.querySelector('#playerTwoWins');
 var gameBoard = document.querySelector('#boardGame');
 var winDrawDisplay = document.querySelector('#displayTurn');
 var resetButton = document.querySelector('#resetButton');
+
 /* Data Model */
+
 var savedGame = JSON.parse(localStorage.getItem('game'));
 var game;
 var playerOne;
 var playerTwo;
 
-checkLocalStorage();
-restoreWinCounter();
-restoreBoard();
-
 /* Event Listeners */
 
+window.addEventListener('load', establishData);
 gameBoard.addEventListener('click', addIcon);
 resetButton.addEventListener('click', resetAll);
 resetButton.addEventListener('mouseenter', onHover);
@@ -24,20 +23,16 @@ resetButton.addEventListener('mouseleave', offHover);
 
 /* Event Handlers */
 
-
-/* Functions */
-
-function offHover() {
-  resetButton.classList.remove('hover');
-}
-
-function onHover() {
-    resetButton.classList.add('hover');
-}
-
-function resetAll() {
-  localStorage.clear();
-  location.reload();
+function establishData() {
+  if (localStorage.length) {
+    assignDataModel();
+  } else {
+    createDataModel();
+  }
+  
+  game.addPlayers(playerOne, playerTwo);
+  displayPlayer();
+  restoreBoard();
 }
 
 function addIcon(event) {
@@ -58,6 +53,22 @@ function addIcon(event) {
   displayPlayer();
 }
 
+function resetAll() {
+  localStorage.clear();
+  location.reload();
+}
+
+function onHover() {
+    resetButton.classList.add('hover');
+}
+
+function offHover() {
+  resetButton.classList.remove('hover');
+}
+
+/* Functions */
+
+
 function displayPlayer() {
   var playerTurnDisplay = document.querySelector('#innerTextLine');
 
@@ -67,18 +78,6 @@ function displayPlayer() {
     playerTurnDisplay.innerText = `${playerTwo.cursor}`;
   }
 }  
-
-function checkLocalStorage() {
-  if (localStorage.length === 1) {
-    assignDataModel();
-    displayPlayer();
-  } else {
-    createDataModel();
-    displayPlayer();
-  }
-  
-  addPlayers();
-}
 
 function assignDataModel() {
   game = new Game(savedGame.playerTurn, savedGame.movesLeft);
@@ -92,18 +91,10 @@ function createDataModel() {
   playerTwo = new Player('two', 'O');
 }
 
-function addPlayers() {
-  game.addPlayer(playerOne);
-  game.addPlayer(playerTwo);
-}
-
 function restoreBoard() {
   playerOne.restoreMoves();
   playerTwo.restoreMoves();
-}
-
-function restoreWinCounter() {
-  game.winCounter();
+  winCounter();
 }
 
 function displayWin(player) {
@@ -115,5 +106,10 @@ function displayDraw() {
 }
 
 function freezeBoard() {
-  winDrawDisplay.classList.add('end-game');
+  winDrawDisplay.classList.toggle('end-game');
 }
+
+function winCounter() {
+    playerOneWins.innerText = `Number of wins: ${playerOne.wins}`;
+    playerTwoWins.innerText = `Number of wins: ${playerTwo.wins}`;
+  }
