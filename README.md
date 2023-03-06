@@ -30,7 +30,7 @@ I built this app from the ground up. a fair amount of time went in to getting th
 1. Demonstrate an understanding for DRY javascript
 2. Understanding data model and DOM
 3. Iterate through DOM elements using for loops
-4. Use problem solving techniques to tackle a large
+4. Use problem solving techniques to tackle a large project.
 
 ### Wins + Challenges:
 [//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
