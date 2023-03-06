@@ -30,8 +30,7 @@ function establishData() {
     createDataModel();
   }
   
-  game.addPlayer(playerOne);
-  game.addPlayer(playerTwo);
+  game.addPlayers(playerOne, playerTwo);
   displayPlayer();
   restoreBoard();
 }
