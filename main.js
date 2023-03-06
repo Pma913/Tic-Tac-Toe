@@ -18,8 +18,6 @@ var playerTwo;
 window.addEventListener('load', establishData);
 gameBoard.addEventListener('click', addIcon);
 resetButton.addEventListener('click', resetAll);
-resetButton.addEventListener('mouseenter', onHover);
-resetButton.addEventListener('mouseleave', offHover);
 
 /* Event Handlers */
 
@@ -56,14 +54,6 @@ function addIcon(event) {
 function resetAll() {
   localStorage.clear();
   location.reload();
-}
-
-function onHover() {
-    resetButton.classList.add('hover');
-}
-
-function offHover() {
-  resetButton.classList.remove('hover');
 }
 
 /* Functions */
