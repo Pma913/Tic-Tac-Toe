@@ -15,7 +15,7 @@ var playerTwo;
 
 /* Event Listeners */
 
-window.addEventListener('load', checkLocalStorage);
+window.addEventListener('load', establishData);
 gameBoard.addEventListener('click', addIcon);
 resetButton.addEventListener('click', resetAll);
 resetButton.addEventListener('mouseenter', onHover);
@@ -23,7 +23,7 @@ resetButton.addEventListener('mouseleave', offHover);
 
 /* Event Handlers */
 
-function checkLocalStorage() {
+function establishData() {
   if (localStorage.length) {
     assignDataModel();
   } else {
