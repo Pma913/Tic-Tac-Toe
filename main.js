@@ -5,23 +5,35 @@ var playerTwoWins = document.querySelector('#playerTwoWins');
 var gameBoard = document.querySelector('#boardGame');
 var winDrawDisplay = document.querySelector('#displayTurn');
 var resetButton = document.querySelector('#resetButton');
+
 /* Data Model */
+
 var savedGame = JSON.parse(localStorage.getItem('game'));
 var game;
 var playerOne;
 var playerTwo;
 
-checkLocalStorage();
-restoreBoard();
-
 /* Event Listeners */
 
+window.addEventListener('load', checkLocalStorage);
 gameBoard.addEventListener('click', addIcon);
 resetButton.addEventListener('click', resetAll);
 resetButton.addEventListener('mouseenter', onHover);
 resetButton.addEventListener('mouseleave', offHover);
 
 /* Event Handlers */
+
+function checkLocalStorage() {
+  if (localStorage.length) {
+    assignDataModel();
+  } else {
+    createDataModel();
+  }
+  
+  displayPlayer();
+  addPlayers();
+  restoreBoard();
+}
 
 function addIcon(event) {
   var clickedSquare = document.getElementById([event.target.id]);
@@ -66,17 +78,6 @@ function displayPlayer() {
     playerTurnDisplay.innerText = `${playerTwo.cursor}`;
   }
 }  
-
-function checkLocalStorage() {
-  if (localStorage.length) {
-    assignDataModel();
-  } else {
-    createDataModel();
-  }
-  
-  displayPlayer();
-  addPlayers();
-}
 
 function assignDataModel() {
   game = new Game(savedGame.playerTurn, savedGame.movesLeft);
