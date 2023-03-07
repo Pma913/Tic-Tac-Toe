@@ -100,6 +100,6 @@ function freezeBoard() {
 }
 
 function winCounter() {
-    playerOneWins.innerText = `Number of wins: ${playerOne.wins}`;
-    playerTwoWins.innerText = `Number of wins: ${playerTwo.wins}`;
-  }
+  playerOneWins.innerText = `Number of wins: ${playerOne.wins}`;
+  playerTwoWins.innerText = `Number of wins: ${playerTwo.wins}`;
+}
