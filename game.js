@@ -32,9 +32,9 @@ class Game {
 
     if (winOne || winTwo || winThree || winFour || winFive || winSix || winSeven || winEight) {
       return true;
+    } else {
+      return false;
     }
-
-    return false;
   }
 
   endGame() {
