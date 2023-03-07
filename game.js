@@ -37,24 +37,18 @@ class Game {
     }
   }
 
-  endGame() {
-    setTimeout(resetBoard, 3000);
-    setTimeout(displayPlayer, 3000);
-    freezeBoard();
-    this.resetMoves();
-    winCounter();
-  }
-
   checkForWin(player) {
     this.removeMoves(); 
 
     if (this.winAchieved(player)) {
       player.increaseWins();
       displayWin(player);
-      this.endGame();
+      endGame();
+      this.resetMoves();
     } else if (!this.movesLeft) {
-      this.endGame();
+      endGame();
       displayDraw();
+      this.resetMoves();
     }
 
     this.changePlayer();

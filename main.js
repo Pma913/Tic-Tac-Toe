@@ -80,6 +80,13 @@ function createDataModel() {
   playerTwo = new Player('two', 'O');
 }
 
+function endGame() {
+  setTimeout(resetBoard, 3000);
+  setTimeout(displayPlayer, 3000);
+  freezeBoard();
+  winCounter();
+}
+
 function resetBoard() {
   var squares = document.getElementsByClassName('square');
 
