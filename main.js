@@ -85,6 +85,7 @@ function endGame() {
   setTimeout(displayPlayer, 3000);
   freezeBoard();
   winCounter();
+  game.resetMoves();
 }
 
 function resetBoard() {

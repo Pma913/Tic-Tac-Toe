@@ -44,11 +44,9 @@ class Game {
       player.increaseWins();
       displayWin(player);
       endGame();
-      this.resetMoves();
     } else if (!this.movesLeft) {
       endGame();
       displayDraw();
-      this.resetMoves();
     }
 
     this.changePlayer();
