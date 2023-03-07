@@ -21,7 +21,6 @@ class Game {
   }
 
   winAchieved(player) {
-
     var winOne = player.moves.includes('squareOne') && player.moves.includes('squareTwo') && player.moves.includes('squareThree');
     var winTwo = player.moves.includes('squareFour') && player.moves.includes('squareFive') && player.moves.includes('squareSix');
     var winThree = player.moves.includes('squareSeven') && player.moves.includes('squareEight') && player.moves.includes('squareNine');
@@ -33,10 +32,9 @@ class Game {
 
     if (winOne || winTwo || winThree || winFour || winFive || winSix || winSeven || winEight) {
       return true;
-    } else {
-      return false;
     }
 
+    return false;
   }
 
   endGame() {
