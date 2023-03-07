@@ -37,40 +37,21 @@ class Game {
     }
   }
 
-  endGame() {
-    setTimeout(this.resetBoard, 3000);
-    setTimeout(displayPlayer, 3000);
-    freezeBoard();
-    this.resetMoves();
-    winCounter();
-  }
-
   checkForWin(player) {
     this.removeMoves(); 
 
     if (this.winAchieved(player)) {
       player.increaseWins();
       displayWin(player);
-      this.endGame();
+      endGame();
     } else if (!this.movesLeft) {
-      this.endGame();
+      endGame();
       displayDraw();
     }
 
     this.changePlayer();
     this.saveGameData();
   } 
-
-  resetBoard() {
-    var squares = document.getElementsByClassName('square');
-
-    for (var i = 0; i < squares.length; i++) {
-      squares[i].innerHTML = '';
-    }
-
-    freezeBoard();
-    winDrawDisplay.innerHTML = `<h2 class="player-turn"">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
-  }
 
   resetMoves() {
     playerOne.moves.length = 0;

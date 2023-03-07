@@ -58,7 +58,6 @@ function resetAll() {
 
 /* Functions */
 
-
 function displayPlayer() {
   var playerTurnDisplay = document.querySelector('#innerTextLine');
 
@@ -80,6 +79,25 @@ function createDataModel() {
   playerOne = new Player('one', 'X');
   playerTwo = new Player('two', 'O');
 }
+
+function endGame() {
+  setTimeout(resetBoard, 3000);
+  setTimeout(displayPlayer, 3000);
+  freezeBoard();
+  winCounter();
+  game.resetMoves();
+}
+
+function resetBoard() {
+  var squares = document.getElementsByClassName('square');
+
+  for (var i = 0; i < squares.length; i++) {
+    squares[i].innerHTML = '';
+  }
+
+  freezeBoard();
+  winDrawDisplay.innerHTML = `<h2 class="player-turn"">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
+}  
 
 function restoreBoard() {
   playerOne.restoreMoves();
