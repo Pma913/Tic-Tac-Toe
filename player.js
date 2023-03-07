@@ -1,4 +1,4 @@
-  class Player {
+class Player {
   constructor(id, cursor, wins, moves) {
     this.id = id;
     this.cursor = cursor;
@@ -16,7 +16,7 @@
 
   restoreMoves() {
     for (var i = 0; i < this.moves.length; i++) {
-      document.getElementById(this.moves[i]).innerHTML = `<h2 class="player-icon">${this.cursor}</h2>`
+      document.getElementById(this.moves[i]).innerHTML = `<h2 class="player-icon">${this.cursor}</h2>`;
     }
   }
 }
