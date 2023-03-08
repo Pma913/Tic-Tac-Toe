@@ -24,7 +24,12 @@ I built this app from the ground up. a fair amount of time went in to getting th
 
 ### Contributors:
 [//]: <> (Who worked on this application? Link to their GitHubs.)
-[Patrick Ankiewicz](https://github.com/Pma913)
+[Patrick Ankiewicz](https://www.linkedin.com/in/patrick-ankiewicz/)
+
+### technologies used
+- javascript
+- CSS
+- HTML
 
 ### Learning Goals:
 
