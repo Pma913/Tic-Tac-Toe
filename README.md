@@ -1,4 +1,5 @@
 # Tic-Tac-Toe
+## [play game](https://github.com/Pma913/Tic-Tac-Toe/settings/pages#:~:text=https%3A//pma913.github.io/Tic%2DTac%2DToe/)
 
 ### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
