@@ -16,7 +16,7 @@ let playerTwo;
 
 /* Event Handlers */
 
-function establishData() {
+const establishData = () => {
   if (localStorage.length) {
     assignDataModel();
   } else {
@@ -28,7 +28,7 @@ function establishData() {
   restoreBoard();
 }
 
-function addIcon(event) {
+const addIcon = (event) => {
   const clickedSquare = document.getElementById([event.target.id]);
   const gameGood = !winDrawDisplay.classList.contains('end-game');
   const isEmpty = !event.target.hasChildNodes();
@@ -46,14 +46,14 @@ function addIcon(event) {
   displayPlayer();
 }
 
-function resetAll() {
+const resetAll = () => {
   localStorage.clear();
   location.reload();
 }
 
-/* Functions */
+/* functions */
 
-function displayPlayer() {
+const displayPlayer = () => {
   const playerTurnDisplay = document.querySelector('#innerTextLine');
 
   if (game.playerTurn === 'one') {
@@ -63,19 +63,19 @@ function displayPlayer() {
   }
 }  
 
-function assignDataModel() {
+const assignDataModel = () => {
   game = new Game(savedGame.playerTurn, savedGame.movesLeft);
   playerOne = new Player('one', 'X', savedGame.players[0].wins, savedGame.players[0].moves);
   playerTwo = new Player('two', 'O', savedGame.players[1].wins, savedGame.players[1].moves);
 }
 
-function createDataModel() {
+const createDataModel = () => {
   game = new Game();
   playerOne = new Player('one', 'X');
   playerTwo = new Player('two', 'O');
 }
 
-function endGame() {
+const endGame = () => {
   setTimeout(resetBoard, 3000);
   setTimeout(displayPlayer, 3000);
   freezeBoard();
@@ -83,7 +83,7 @@ function endGame() {
   game.resetMoves();
 }
 
-function resetBoard() {
+const resetBoard = () => {
   const squares = document.getElementsByClassName('square');
 
   for (var i = 0; i < squares.length; i++) {
@@ -94,25 +94,19 @@ function resetBoard() {
   winDrawDisplay.innerHTML = `<h2 class="player-turn"">It's <span class="inner-text-display" id="innerTextLine"></span>'s turn</h2>`;
 }  
 
-function restoreBoard() {
+const restoreBoard = () => {
   playerOne.restoreMoves();
   playerTwo.restoreMoves();
   winCounter();
 }
 
-function displayWin(player) {
-  winDrawDisplay.innerHTML = `<h2>${player.cursor} Won!</h2>`;
-}
+const displayWin = player => winDrawDisplay.innerHTML = `<h2>${player.cursor} Won!</h2>`;
 
-function displayDraw() {
-  winDrawDisplay.innerHTML = `<h2>It be a draw!</h2>`;
-}
+const displayDraw = () => winDrawDisplay.innerHTML = `<h2>It be a draw!</h2>`;
 
-function freezeBoard() {
-  winDrawDisplay.classList.toggle('end-game');
-}
+const freezeBoard = () => winDrawDisplay.classList.toggle('end-game');
 
-function winCounter() {
+const winCounter = () => {
   playerOneWins.innerText = `Number of wins: ${playerOne.wins}`;
   playerTwoWins.innerText = `Number of wins: ${playerTwo.wins}`;
 }
