@@ -1,4 +1,5 @@
 # Tic-Tac-Toe
+## [play game](https://github.com/Pma913/Tic-Tac-Toe/settings/pages#:~:text=https%3A//pma913.github.io/Tic%2DTac%2DToe/)
 
 ### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
@@ -23,7 +24,12 @@ I built this app from the ground up. a fair amount of time went in to getting th
 
 ### Contributors:
 [//]: <> (Who worked on this application? Link to their GitHubs.)
-[Patrick Ankiewicz](https://github.com/Pma913)
+[Patrick Ankiewicz](https://www.linkedin.com/in/patrick-ankiewicz/)
+
+### technologies used
+- javascript
+- CSS
+- HTML
 
 ### Learning Goals:
 
