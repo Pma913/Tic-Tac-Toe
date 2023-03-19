@@ -1,23 +1,18 @@
 /* query selectors */
 
-var playerOneWins = document.querySelector('#playerOneWins');
-var playerTwoWins = document.querySelector('#playerTwoWins');
-var gameBoard = document.querySelector('#boardGame');
-var winDrawDisplay = document.querySelector('#displayTurn');
-var resetButton = document.querySelector('#resetButton');
+const playerOneWins = document.querySelector('#playerOneWins');
+const playerTwoWins = document.querySelector('#playerTwoWins');
+const gameBoard = document.querySelector('#boardGame');
+const winDrawDisplay = document.querySelector('#displayTurn');
+const resetButton = document.querySelector('#resetButton');
 
 /* Data Model */
 
-var savedGame = JSON.parse(localStorage.getItem('game'));
-var game;
-var playerOne;
-var playerTwo;
+const savedGame = JSON.parse(localStorage.getItem('game'));
+let game;
+let playerOne;
+let playerTwo;
 
-/* Event Listeners */
-
-window.addEventListener('load', establishData);
-gameBoard.addEventListener('click', addIcon);
-resetButton.addEventListener('click', resetAll);
 
 /* Event Handlers */
 
@@ -34,9 +29,9 @@ function establishData() {
 }
 
 function addIcon(event) {
-  var clickedSquare = document.getElementById([event.target.id]);
-  var gameGood = !winDrawDisplay.classList.contains('end-game');
-  var isEmpty = !event.target.hasChildNodes();
+  const clickedSquare = document.getElementById([event.target.id]);
+  const gameGood = !winDrawDisplay.classList.contains('end-game');
+  const isEmpty = !event.target.hasChildNodes();
 
   if (game.playerTurn === "one" && isEmpty && gameGood) {
     clickedSquare.innerHTML = `<h2 class="player-icon">${playerOne.cursor}</h2>`;
@@ -59,7 +54,7 @@ function resetAll() {
 /* Functions */
 
 function displayPlayer() {
-  var playerTurnDisplay = document.querySelector('#innerTextLine');
+  const playerTurnDisplay = document.querySelector('#innerTextLine');
 
   if (game.playerTurn === 'one') {
     playerTurnDisplay.innerText = `${playerOne.cursor}`;
@@ -89,7 +84,7 @@ function endGame() {
 }
 
 function resetBoard() {
-  var squares = document.getElementsByClassName('square');
+  const squares = document.getElementsByClassName('square');
 
   for (var i = 0; i < squares.length; i++) {
     squares[i].innerHTML = '';
@@ -121,3 +116,9 @@ function winCounter() {
   playerOneWins.innerText = `Number of wins: ${playerOne.wins}`;
   playerTwoWins.innerText = `Number of wins: ${playerTwo.wins}`;
 }
+
+/* Event Listeners */
+
+window.addEventListener('load', establishData);
+gameBoard.addEventListener('click', addIcon);
+resetButton.addEventListener('click', resetAll);
