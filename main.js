@@ -84,9 +84,9 @@ const endGame = () => {
 }
 
 const resetBoard = () => {
-  const squares = document.getElementsByClassName('square');
+  let squares = document.getElementsByClassName('square');
 
-  for (var i = 0; i < squares.length; i++) {
+  for (let i = 0; i < squares.length; i++) {
     squares[i].innerHTML = '';
   }
 
