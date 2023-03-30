@@ -8,7 +8,7 @@ const resetButton = document.querySelector('#resetButton');
 
 /* Data Model */
 
-const savedGame = JSON.parse(localStorage.getItem('game'));
+const savedGame = JSON.parse(localStorage.getItem('ticTacGame'));
 let game;
 let playerOne;
 let playerTwo;
@@ -17,7 +17,7 @@ let playerTwo;
 /* Event Handlers */
 
 const establishData = () => {
-  if (localStorage.length) {
+  if (localStorage.ticTacGame) {
     assignDataModel();
   } else {
     createDataModel();
