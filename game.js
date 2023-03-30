@@ -60,7 +60,7 @@ class Game {
   }
 
   saveGameData() {
-    localStorage.setItem('game', JSON.stringify(game));
+    localStorage.setItem('ticTacGame', JSON.stringify(game));
   }
 
   removeMoves() {
